@@ -402,6 +402,17 @@ html.rm .hero__hint svg{animation:none}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--cream);box-shadow:none}
 .tab .tab__n{margin-left:6px;font-size:12px;opacity:.6}
 .mgroup{padding-top:30px;scroll-margin-top:calc(var(--hdr) + 70px)}
+.mgroup:not(.open) .dish--more{display:none}
+.more-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:14px;min-height:52px;
+  border:0;border-radius:18px;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line);
+  font:inherit;font-weight:700;font-size:15px;color:var(--ink);cursor:pointer;
+  transition:background-color .25s, box-shadow .25s, transform .3s var(--puff);
+}
+.more-btn:hover{box-shadow:inset 0 0 0 1.5px var(--tomato);color:var(--tomato)}
+.more-btn:active{transform:scale(.98)}
+.more-btn__arr{width:9px;height:9px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .35s var(--puff)}
+.mgroup.open .more-btn__arr{transform:translateY(2px) rotate(-135deg)}
 .mgroup__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
 .mgroup__head h3{font-size:24px}
 .mgroup__head span{font-size:13px;color:var(--ink-3);font-weight:600}
@@ -1309,21 +1320,18 @@ function renderMenu() {
     t.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
     t.setAttribute('aria-controls', 'cat-' + c.id);
     t.append(el('span', 'tab__n', String(items.length)));
-    t.addEventListener('click', () => {
-      const g = document.getElementById('cat-' + c.id);
-      if (g) g.scrollIntoView({ behavior: document.documentElement.classList.contains('rm') ? 'auto' : 'smooth', block: 'start' });
-      setActiveTab(c.id);
-    });
+    t.addEventListener('click', () => showCat(c.id, true));
     tabs.append(t);
 
     const g = el('section', 'mgroup'); g.id = 'cat-' + c.id; g.dataset.cat = c.id;
     g.setAttribute('role', 'tabpanel'); g.setAttribute('aria-label', c.name);
+    if (i !== 0) g.hidden = true;
     const head = el('div', 'mgroup__head');
     head.append(el('h3', null, c.name), el('span', null, items.length + ' поз.'));
     g.append(head);
     const ul = el('ul', 'dishes');
     items.forEach((item, k) => {
-      const li = el('li', 'dish rise'); li.style.setProperty('--d', Math.min(k, 4) * 0.06 + 's');
+      const li = el('li', 'dish' + (k >= MENU_PREVIEW ? ' dish--more' : ''));
       const ph = el('div', 'dish__ph'); ph.style.setProperty('--ico', catIcon(item.cat));
       if (SHOW_PHOTOS && item.img) {
         const img = el('img'); img.src = item.img; img.alt = isTbd(item.name) ? 'Фото блюда' : item.name; img.loading = 'lazy'; img.decoding = 'async';
@@ -1346,8 +1354,58 @@ function renderMenu() {
       buildAction(item);
     });
     g.append(ul);
+    // длинную категорию сворачиваем: видно первые MENU_PREVIEW, остальное по кнопке
+    const rest = items.length - MENU_PREVIEW;
+    if (rest > 0) {
+      const more = el('button', 'more-btn');
+      more.type = 'button';
+      more.setAttribute('aria-expanded', 'false');
+      const label = el('span', null, 'Ещё ' + rest + ' ' + plural(rest, 'позиция', 'позиции', 'позиций'));
+      more.append(label, el('i', 'more-btn__arr'));
+      more.addEventListener('click', () => {
+        const open = !g.classList.contains('open');
+        g.classList.toggle('open', open);
+        more.setAttribute('aria-expanded', String(open));
+        label.textContent = open ? 'Свернуть' : 'Ещё ' + rest + ' ' + plural(rest, 'позиция', 'позиции', 'позиций');
+        if (open) {
+          g.querySelectorAll('.dish--more').forEach((d, k) => d.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: Math.min(k, 6) * 40, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }));
+        } else {
+          scrollToMenuTop();
+        }
+      });
+      g.append(more);
+    }
     list.append(g);
   });
+}
+const MENU_PREVIEW = 4;
+function plural(n, one, few, many) {
+  const a = n % 10, b = n % 100;
+  return a === 1 && b !== 11 ? one : a >= 2 && a <= 4 && (b < 12 || b > 14) ? few : many;
+}
+// Прокрутить к началу меню, только если вкладки ушли выше экрана
+function scrollToMenuTop() {
+  const tabs = $('#tabs'), list = $('#menuList');
+  const hdr = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr')) || 60;
+  const top = list.getBoundingClientRect().top + scrollY - hdr - tabs.offsetHeight - 6;
+  if (scrollY > top) window.scrollTo({ top, behavior: document.documentElement.classList.contains('rm') ? 'auto' : 'smooth' });
+}
+// Показать одну категорию, остальные спрятать
+function showCat(id, fromTab) {
+  document.querySelectorAll('.mgroup').forEach(g => {
+    const on = g.dataset.cat === id;
+    if (on && g.hidden) {
+      g.hidden = false;
+      g.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 360, easing: 'cubic-bezier(.22,1,.36,1)' });
+    } else if (!on) {
+      g.hidden = true;
+      g.classList.remove('open');
+      const b = g.querySelector('.more-btn');
+      if (b) { b.setAttribute('aria-expanded', 'false'); const n = g.querySelectorAll('.dish--more').length; b.firstChild.textContent = 'Ещё ' + n + ' ' + plural(n, 'позиция', 'позиции', 'позиций'); }
+    }
+  });
+  setActiveTab(id);
+  if (fromTab) scrollToMenuTop();
 }
 function setActiveTab(id) {
   document.querySelectorAll('.tab').forEach(t => {
@@ -1356,7 +1414,7 @@ function setActiveTab(id) {
     if (on) { const bar = $('#tabs'); const l = t.offsetLeft - 16; bar.scrollTo({ left: l, behavior: 'smooth' }); }
   });
 }
-function initScrollSpy() {
+function initScrollSpy() { return; // категории теперь переключаются вкладками, подсветка по скроллу не нужна
   const groups = [...document.querySelectorAll('.mgroup')];
   const io = new IntersectionObserver(() => {
     const line = (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hdr')) || 60) + 80;
@@ -1440,7 +1498,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.clas
 document.querySelectorAll('[data-close-sheet]').forEach(a => a.addEventListener('click', closeSheet));
 document.querySelectorAll('[data-go-pizza]').forEach(a => a.addEventListener('click', e => {
   e.preventDefault();
-  const g = document.getElementById('cat-pizza') || document.getElementById('menu');
+  showCat('pizza-red');
+  const g = document.getElementById('menu');
   g.scrollIntoView({ behavior: document.documentElement.classList.contains('rm') ? 'auto' : 'smooth', block: 'start' });
 }));
 
