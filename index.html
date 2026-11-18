@@ -619,6 +619,16 @@ html.rm .map__pin{animation:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form__hint{font-size:13px;color:var(--ink-3);text-align:center}
 .pickup-note{font-size:14px;color:var(--ink-2);background:var(--basil-l);border-radius:14px;padding:12px 14px}
+.seg label{text-align:center;line-height:1.2;padding:6px 8px}
+.zone-note{display:block;margin-top:8px;font-size:13.5px;color:var(--ink-2)}
+.zone-note.warn{color:var(--tomato);font-weight:600}
+.field.err .zone-note{color:var(--tomato);font-weight:600}
+.ccard p.big{font-size:20px;color:var(--ink)}
+.menu__note{margin-top:14px;font-size:14px;color:var(--ink-3)}
+.deliv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:16px;padding:16px 18px;border-radius:20px;background:var(--paper);box-shadow:var(--sh);font-size:15px;color:var(--ink-2)}
+.deliv b{font-family:var(--f-display);font-weight:700;color:var(--ink);font-size:17px}
+.deliv strong{color:var(--ink)}
+.total-sub{display:flex;justify-content:space-between;font-size:14.5px;color:var(--ink-2);margin-top:6px}
 .done{text-align:center;padding:30px 6px}
 .done__ico{width:72px;height:72px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--basil-l);color:var(--basil)}
 .done__ico svg{width:36px;height:36px}
@@ -712,15 +722,15 @@ html.rm .map__pin{animation:none}
       <div class="about__grid">
         <article class="about__card rise">
           <span class="about__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5.3 1.6 1.2 2.5 2 2.5-.6-3 0-5.5 1-8Z"/></svg></span>
-          <div><h3>Дровяная печь</h3><p>Пицца печётся на живом огне — отсюда румяные пятнышки на бортике и тот самый дымный аромат.</p></div>
+          <div><h3>Печь выше 450&nbsp;°C</h3><p>Купол сложен вручную, топим только дровами. Пицца проводит в печи 60–90 секунд — отсюда румяные пятнышки на бортике.</p></div>
         </article>
         <article class="about__card rise" style="--d:.08s">
-          <span class="about__ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3c-.6 1 .6 2 0 3M12 3c-.6 1 .6 2 0 3"/></svg></span>
-          <div><h3>Пицца + кофе</h3><p>Заходи на кусочек и чашку кофе — или забирай всё с собой.</p></div>
+          <span class="about__ico g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.4 0-8-3.1-8-7.5C4 9 8 5.5 12 3c4 2.5 8 6 8 10.5 0 4.4-3.6 7.5-8 7.5Z"/><path d="M12 21V9"/></svg></span>
+          <div><h3>Мука и томаты из Италии</h3><p>Тесто — на муке Le 5 Stagioni, соус — из томатов Mutti, созревших под солнцем Пармы.</p></div>
         </article>
       </div>
 
-      <p class="about__story tbd rise">[ПЛЕЙСХОЛДЕР: история Napo Pizza — кто открыл, с какого года, откуда рецепт теста, чем гордятся. Взять из Instagram или у владельца]</p>
+      <p class="about__story rise">Мы готовим пиццу так, как её пекут в Неаполе: на итальянской муке, которую используют местные мастера, с соусом из отборных томатов и в настоящей дровяной печи. Тесто получается лёгким и ароматным, серединка — нежной, а корочка — «леопардовой». Утром заходи на завтрак, днём — на пасту или боул, вечером — за пиццей с друзьями.</p>
     </section>
 
     <!-- ============ МЕНЮ ============ -->
@@ -730,7 +740,7 @@ html.rm .map__pin{animation:none}
       <p class="kicker rise"><b>02</b> Меню</p>
       <h2 class="sec__title rise" id="menuTitle">Выбирай. <em>Печь уже горит</em></h2>
       <p class="sec__lead rise">Жми «+», собери заказ — и отправь его нам в WhatsApp в пару тапов.</p>
-      <p class="tbd rise" style="margin-top:16px;font-size:14px">[ПЛЕЙСХОЛДЕР: позиции и цены — с онлайн-меню foodpicasso / Instagram. Ссылка на foodpicasso сейчас ведёт только на страницу скачивания приложения]</p>
+      <p class="menu__note rise">Пиццу готовим с 10:00 до 22:00, завтраки — весь день. Оператор подтвердит заказ и итоговую сумму.</p>
 
       <div class="tabs" id="tabs" role="tablist" aria-label="Категории меню"></div>
       <div id="menuList">
@@ -762,10 +772,15 @@ html.rm .map__pin{animation:none}
         <article class="why__item g rise" style="--d:.08s">
           <div class="why__num"><svg class="why__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3c-.6 1 .6 2 0 3M12 3c-.6 1 .6 2 0 3"/></svg><small>и кофе</small></div>
           <h3>Не только пицца</h3>
-          <p>Кофе, завтраки и многое другое — заглядывай в меню.</p>
+          <p>Завтраки весь день, паста, боулы, пануццо и детское меню.</p>
         </article>
       </div>
-      <p class="tbd rise" style="margin-top:14px">[ПЛЕЙСХОЛДЕР: доставка — зона, время, стоимость, минимальная сумма заказа]</p>
+      <div class="deliv rise">
+        <b>Доставка</b>
+        <span>Город, Михайловка — <strong>1&nbsp;500&nbsp;₸</strong></span>
+        <span>Юго-Восток — <strong>2&nbsp;000&nbsp;₸</strong></span>
+        <span>Минимальный заказ — от 7&nbsp;000&nbsp;₸ без учёта доставки</span>
+      </div>
     </section>
 
     <!-- ============ ОТЗЫВЫ И ГАЛЕРЕЯ ============ -->
@@ -945,9 +960,10 @@ html.rm .map__pin{animation:none}
       </div>
       <div class="ccard rise">
         <h3>Часы работы</h3>
-        <p class="tbd" style="margin-top:10px">[ПЛЕЙСХОЛДЕР: часы работы, например «ежедневно 10:00–23:00»]</p>
+        <p class="big" style="margin-top:6px">Ежедневно 09:00–22:00</p>
+        <p>Завтраки — весь день, пицца — с 10:00 до 22:00.</p>
         <h3 style="margin-top:20px">Доставка</h3>
-        <p class="tbd" style="margin-top:10px">[ПЛЕЙСХОЛДЕР: зона и условия доставки]</p>
+        <p style="margin-top:6px">Город, Михайловка — 1&nbsp;500&nbsp;₸<br>Юго-Восток — 2&nbsp;000&nbsp;₸<br>Минимальный заказ — от 7&nbsp;000&nbsp;₸ без учёта доставки.</p>
       </div>
       <div class="ccard rise">
         <h3>Instagram</h3>
@@ -1020,6 +1036,14 @@ html.rm .map__pin{animation:none}
               <input type="radio" name="mode" id="mPick" value="pickup"><label for="mPick">Самовывоз</label>
             </div>
           </div>
+          <div class="field" id="fZone">
+            <span class="lbl" id="zoneLbl">Район доставки</span>
+            <div class="seg" role="radiogroup" aria-labelledby="zoneLbl">
+              <input type="radio" name="zone" id="zCity" value="city" checked><label for="zCity">Город, Михайловка</label>
+              <input type="radio" name="zone" id="zSE" value="se"><label for="zSE">Юго-Восток</label>
+            </div>
+            <span class="zone-note" id="zoneNote"></span>
+          </div>
           <div class="field" id="fAddr">
             <label for="oAddr">Адрес доставки</label>
             <input id="oAddr" name="address" type="text" autocomplete="street-address" maxlength="160" placeholder="Улица, дом, подъезд, квартира">
@@ -1064,35 +1088,112 @@ const CONTACTS = {
 // Поставь true, когда загрузишь фото блюд и галереи в images/ (иначе показываются аккуратные заглушки)
 const SHOW_PHOTOS = false;
 
+// Условия доставки (из Instagram @napopizza.krg, хайлайт «ИНФО»)
+const DELIVERY = {
+  min: 7000, // минимальный заказ без учёта доставки
+  zones: { city: { name: 'Город, Михайловка', fee: 1500 }, se: { name: 'Юго-Восток', fee: 2000 } }
+};
+
 const CATS = [
-  { id: 'pizza',     name: 'Пицца' },
-  { id: 'breakfast', name: 'Завтраки' },
-  { id: 'hot',       name: 'Горячее' },
-  { id: 'donuts',    name: 'Пончики' },
-  { id: 'coffee',    name: 'Кофе' }
+  { id: 'pizza-red',   name: 'Пицца на томатах' },
+  { id: 'pizza-white', name: 'Белая пицца' },
+  { id: 'panuozzo',    name: 'Пануццо' },
+  { id: 'focaccia',    name: 'Фокачча' },
+  { id: 'breakfast',   name: 'Завтраки' },
+  { id: 'pasta',       name: 'Паста' },
+  { id: 'bowls',       name: 'Боулы и салаты' },
+  { id: 'hot',         name: 'Супы и горячее' },
+  { id: 'kids',        name: 'Детское' }
 ];
 
-// price: null — цена неизвестна (показывается плейсхолдер). Когда будут реальные цены — пиши числом: 3500
+// Меню и цены — из Instagram @napopizza.krg (хайлайт «МЕНЮ»). price — число в тенге, null = «уточнить».
+// Фото: images/<id>.jpg (например images/p01.jpg), квадрат 1:1, блюдо по центру.
+const M = (id, cat, name, desc, price) => ({ id, cat, name, desc, size: '', price, img: 'images/' + id + '.jpg' });
 const MENU = [
-  { id: 'pz1', cat: 'pizza', name: '[ПЛЕЙСХОЛДЕР: пицца 1]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[Ø / вес]', price: null, img: 'images/pizza-1.jpg' },
-  { id: 'pz2', cat: 'pizza', name: '[ПЛЕЙСХОЛДЕР: пицца 2]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[Ø / вес]', price: null, img: 'images/pizza-2.jpg' },
-  { id: 'pz3', cat: 'pizza', name: '[ПЛЕЙСХОЛДЕР: пицца 3]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[Ø / вес]', price: null, img: 'images/pizza-3.jpg' },
-  { id: 'pz4', cat: 'pizza', name: '[ПЛЕЙСХОЛДЕР: пицца 4]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[Ø / вес]', price: null, img: 'images/pizza-4.jpg' },
-  { id: 'pz5', cat: 'pizza', name: '[ПЛЕЙСХОЛДЕР: пицца 5]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[Ø / вес]', price: null, img: 'images/pizza-5.jpg' },
-  { id: 'pz6', cat: 'pizza', name: '[ПЛЕЙСХОЛДЕР: пицца 6]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[Ø / вес]', price: null, img: 'images/pizza-6.jpg' },
+  M('p01', 'pizza-red', 'Маргарита', 'Томатный соус, моцарелла, пармезан, базилик', 3200),
+  M('p02', 'pizza-red', 'Маргарита Galbani', 'Томатный соус, моцарелла Galbani, базилик', 3400),
+  M('p03', 'pizza-red', 'Napo Pizza', 'Томатный соус, моцарелла, говяжья ветчина, белый гриб, рукола, вяленые черри, бальзамический крем', 4400),
+  M('p04', 'pizza-red', 'Пепперони', 'Томатный соус, моцарелла, пепперони, базилик', 3900),
+  M('p05', 'pizza-red', 'С тунцом', 'Томатный соус, тунец в собственном соку, рукола, кукуруза, красный лук, чеснок', 4000),
+  M('p06', 'pizza-red', 'Страчателла', 'Томатный соус, сыр страчателла, рукола, черри, соус песто', 4700),
+  M('p07', 'pizza-red', 'Мексика', 'Томатный соус, моцарелла, фарш из мраморной говядины Kazbeef, болгарский перец, черри, кукуруза, красный лук, халапеньо, базилик', 4500),
+  M('p08', 'pizza-red', 'Капрезе', 'Томатный соус, моцарелла Galbani, соус песто, бальзамический крем, базилик, орегано', 4200),
+  M('p09', 'pizza-red', 'С анчоусами', 'Томатный соус, анчоусы, зелёный лук, чеснок', 3500),
+  M('p10', 'pizza-red', 'Жетысу', 'Томатный соус, моцарелла, казы, жая, курт, красный лук, зелёный лук, чёрный перец, оливковое масло', 5000),
 
-  { id: 'br1', cat: 'breakfast', name: '[ПЛЕЙСХОЛДЕР: завтрак 1]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[вес]', price: null, img: 'images/breakfast-1.jpg' },
-  { id: 'br2', cat: 'breakfast', name: '[ПЛЕЙСХОЛДЕР: завтрак 2]', desc: '[ПЛЕЙСХОЛДЕР: состав]', size: '[вес]', price: null, img: 'images/breakfast-2.jpg' },
+  M('p11', 'pizza-white', 'Куриная', 'Сливочный соус, маринованное куриное филе, моцарелла Galbani, соус песто', 3900),
+  M('p12', 'pizza-white', 'С трюфельной пастой', 'Сливочный соус, трюфельная паста, сыр чеддер, охотничьи колбаски, вяленые томаты', 4900),
+  M('p13', 'pizza-white', 'С ростбифом', 'Соус ромеско, ростбиф, запечённый болгарский перец, рукола, петрушка', 4800),
+  M('p14', 'pizza-white', 'Ветчина-грибы', 'Сливочный соус, моцарелла, говяжья ветчина, жареные шампиньоны, базилик', 4000),
+  M('p15', 'pizza-white', 'С креветками', 'Соус биск, сливки, моцарелла, креветки, черри, красный лук, петрушка', 4800),
+  M('p16', 'pizza-white', 'Сырная', 'Творожный соус, моцарелла, чеддер, дор-блю, пармезан, базилик', 4000),
+  M('p17', 'pizza-white', 'Грибная', 'Творожный соус, моцарелла, жареные шампиньоны, белый гриб, базилик, чёрный перец', 3900),
+  M('p18', 'pizza-white', 'Болоньезе', 'Творожный соус, моцарелла, соус болоньезе, рукола, черри, пармезан', 4300),
+  M('p19', 'pizza-white', 'Сёмга-цукини', 'Творожный соус, моцарелла, филе сёмги, цукини, соус фета, кедровые орешки', 5000),
+  M('p20', 'pizza-white', 'Груша-дор-блю', 'Творожный соус, моцарелла, дор-блю, груша, мёд, кедровые орешки', 3800),
+  M('p21', 'pizza-white', 'Десертная', 'Творожный и сливочный соус, ягодный джем, вишня, маршмеллоу', 3000),
 
-  { id: 'ht1', cat: 'hot', name: 'Пельмени', desc: '[ПЛЕЙСХОЛДЕР: начинка, подача]', size: '[вес / шт]', price: null, img: 'images/hot-pelmeni.jpg' },
-  { id: 'ht2', cat: 'hot', name: 'Стейк', desc: '[ПЛЕЙСХОЛДЕР: какое мясо, гарнир]', size: '[вес]', price: null, img: 'images/hot-steak.jpg' },
+  M('n01', 'panuozzo', 'Пануццо с тунцом', 'Соус с маслинами, болгарский перец, салат айсберг, тунец в собственном соку, кукуруза, красный лук', 2800),
+  M('n02', 'panuozzo', 'Пануццо с сёмгой', 'Творожный соус, соус гуакамоле, сёмга, салат айсберг', 3200),
+  M('n03', 'panuozzo', 'Пануццо с трюфельной пастой', 'Трюфельная паста, творожный соус, охотничьи колбаски, жареные шампиньоны, рукола', 2900),
+  M('n04', 'panuozzo', 'Пануццо куриный', 'Копчёная курица, помидор, салат айсберг, жареные шампиньоны, сырный и горчичный соус', 2600),
+  M('n05', 'panuozzo', 'Пануццо с говяжьей колбаской', 'Салат айсберг, говяжья колбаска, помидор, красный лук, горчичный соус', 2800),
+  M('n06', 'panuozzo', 'Пануццо открытый', 'Томатный соус, моцарелла, охотничьи колбаски, зелёный лук', 2400),
+  M('n07', 'panuozzo', 'Пануццо с ветчиной', 'Соус фета, салат айсберг, моцарелла Galbani, говяжья ветчина, копчёный сливочный соус', 2700),
+  M('n08', 'panuozzo', 'Пануццо с ветчиной, жареный', 'То же, что с ветчиной, но обжаренный', 2900),
+  M('n09', 'panuozzo', 'Пануццо с колбаской и моцареллой Galbani', 'Салат айсберг, моцарелла Galbani, говяжья колбаска, копчёно-сливочный соус, соус фета', 3000),
+  M('n10', 'panuozzo', 'Пануццо с колбаской и моцареллой, жареный', 'То же, что с колбаской и моцареллой, но обжаренный', 3200),
 
-  { id: 'dn1', cat: 'donuts', name: '[ПЛЕЙСХОЛДЕР: пончик 1]', desc: '[ПЛЕЙСХОЛДЕР: начинка / глазурь]', size: '[шт]', price: null, img: 'images/donut-1.jpg' },
-  { id: 'dn2', cat: 'donuts', name: '[ПЛЕЙСХОЛДЕР: пончик 2]', desc: '[ПЛЕЙСХОЛДЕР: начинка / глазурь]', size: '[шт]', price: null, img: 'images/donut-2.jpg' },
+  M('f01', 'focaccia', 'Фокачча с пармезаном', 'Пармезан, чеснок, орегано, соль', 1800),
+  M('f02', 'focaccia', 'Фокачча с фетой', 'Соус фета, соус песто, вяленые томаты, оливковое масло', 2000),
+  M('f03', 'focaccia', 'Фокачча со страчателлой', 'Сыр страчателла, чесночное масло', 2000),
 
-  { id: 'cf1', cat: 'coffee', name: '[ПЛЕЙСХОЛДЕР: кофе 1]', desc: '[ПЛЕЙСХОЛДЕР: описание]', size: '[мл]', price: null, img: 'images/coffee-1.jpg' },
-  { id: 'cf2', cat: 'coffee', name: '[ПЛЕЙСХОЛДЕР: кофе 2]', desc: '[ПЛЕЙСХОЛДЕР: описание]', size: '[мл]', price: null, img: 'images/coffee-2.jpg' },
-  { id: 'cf3', cat: 'coffee', name: '[ПЛЕЙСХОЛДЕР: кофе 3]', desc: '[ПЛЕЙСХОЛДЕР: описание]', size: '[мл]', price: null, img: 'images/coffee-3.jpg' }
+  M('b01', 'breakfast', 'Гранола', 'Овсяные хлопья в меду с арахисовой пастой и бананом, корица, миндаль, грецкий орех, тыквенные семечки, клюква, малина, манго, йогурт', 2500),
+  M('b02', 'breakfast', 'Сырники с кремом тирамису', 'Сырники, крем тирамису', 2500),
+  M('b03', 'breakfast', 'Сырники со смородиновым конфи', 'Сырники, смородиновое конфи, сметана', 2200),
+  M('b04', 'breakfast', 'Сырники со сгущёнкой', 'Сырники, варёная сгущёнка, сметана', 2200),
+  M('b05', 'breakfast', 'Глазунья с колбасками', 'Яйца, колбаска говяжья или куриная, микс салатов, черри, шампиньоны, фасоль в томате', 3500),
+  M('b06', 'breakfast', 'Драник с сёмгой', 'Картофель, сёмга, яйцо, микс салатов, сметана', 3500),
+  M('b07', 'breakfast', 'Омлет с ветчиной и грибами', 'Яйцо, говяжья ветчина, шампиньоны, моцарелла, чеддер, микс салатов, фокачча с копчёным сливочным маслом', 3500),
+  M('b08', 'breakfast', 'Шакшука', 'Яйца, креветки, черри, соус биск', 4000),
+  M('b09', 'breakfast', 'Овсяная каша с пармезаном', 'Овсяные хлопья, грецкий орех, пармезан, мёд', 2500),
+  M('b10', 'breakfast', 'Рисовая каша с манго', 'Рис, кокосовое молоко, манго', 2500),
+  M('b11', 'breakfast', 'Овсяная каша с яблоками', 'Овсяные хлопья, яблоки, корица, арахисовая паста, грецкий орех, мёд', 2500),
+  M('b12', 'breakfast', 'Круассан классический', 'Без начинки', 1000),
+  M('b13', 'breakfast', 'Круассан с сёмгой', 'Творожный соус, рукола, сёмга', 2700),
+  M('b14', 'breakfast', 'Круассан с ветчиной', 'Сырный соус, говяжья ветчина, жареные шампиньоны', 2400),
+
+  M('a01', 'pasta', 'Арабьята со страчателлой', 'Пенне, сыр страчателла, томатный соус, базилик', 4000),
+  M('a02', 'pasta', 'Ньокки в шпинатном креме с сёмгой', 'Ньокки, сёмга, рикотта, шпинатный крем', 4500),
+  M('a03', 'pasta', 'Ньокки с говядиной и белыми грибами', 'Ньокки, говяжья вырезка, белый гриб, сливки, пармезан', 4800),
+  M('a04', 'pasta', 'Ньокки с креветками', 'Ньокки, креветки, сливки, пармезан, шпинат', 4000),
+  M('a05', 'pasta', 'Паста болоньезе', 'Спагетти, соус болоньезе, базилик, пармезан', 3600),
+  M('a06', 'pasta', 'Паста с креветками', 'Лапша собственного приготовления, креветки, черри, сливки', 4500),
+  M('a07', 'pasta', 'Спагетти в сырном соусе', 'Спагетти, моцарелла, чеддер, пармезан, сливки', 3000),
+  M('a08', 'pasta', 'Тальяллини с курицей в грибном соусе', 'Лапша собственного приготовления, куриное филе, трюфельная паста, грибной соус, сливки, пармезан', 4000),
+
+  M('w01', 'bowls', 'Боул с креветками', 'Булгур, киноа, креветки, черри, свёкла, бобы, шпинат, тыквенные семечки, кунжут, ореховый соус', 3700),
+  M('w02', 'bowls', 'Боул с курицей', 'Булгур, киноа, куриное филе, черри, свёкла, бобы, шпинат, тыквенные семечки, кунжут, ореховый соус', 3300),
+  M('w03', 'bowls', 'Боул с мясом', 'Булгур, киноа, говяжья вырезка, черри, шпинат, стручковая фасоль, яйцо, запечённый перец, кунжут', 3800),
+  M('w04', 'bowls', 'Боул с сёмгой', 'Булгур, киноа, сёмга, зелёный горошек, яйцо, огурец, шпинат, рикотта, устричный соус, кешью, тыквенные семечки', 4000),
+  M('w05', 'bowls', 'Боул с тунцом', 'Булгур, киноа, тунец в собственном соку, шпинат, стручковая фасоль, оливки, запечённый перец, кешью, кунжут', 3500),
+  M('w06', 'bowls', 'Баклажаны пармеджано', 'Баклажаны, моцарелла, пармезан, чеснок, базилик', 2700),
+  M('w07', 'bowls', 'Запечённые перцы с соусом ромеско', 'Болгарский перец, анчоусы, соус ромеско, соус фета, чеснок, фокачча', 3200),
+  M('w08', 'bowls', 'Панцанелла с рикоттой', 'Помидоры, огурцы, черри, анчоусы, каперсы, рикотта, красный лук, базилик, бальзамический крем, сухарики из фокаччи', 4000),
+
+  M('h01', 'hot', 'Суп с ньокками и говядиной', 'Говядина, ньокки собственного приготовления, фокачча с копчёным сливочным маслом', 3000),
+  M('h02', 'hot', 'Суп-пюре грибной', 'Шампиньоны, белый гриб, сливки, фокачча с копчёным сливочным маслом', 3000),
+  M('h03', 'hot', 'Окрошка (сезонное блюдо)', 'Куриное филе, редис, огурец, фокачча', 2500),
+  M('h04', 'hot', 'Стейк Денвер', 'Стейк, фокачча, микс салатов, черри, халапеньо, мясной соус', 6500),
+  M('h05', 'hot', 'Стейк с трюфельным пюре', 'Говяжья вырезка, картофельное пюре с трюфельной пастой, зелёный горошек, сливки', 6000),
+  M('h06', 'hot', 'Стейк форели с пастой орзо', 'Стейк форели, паста орзо, пармезан, соус из зелёного горошка', 6000),
+  M('h07', 'hot', 'Ризотто с белыми грибами', 'Рис арборио, белый гриб, шампиньоны, пармезан', 4200),
+  M('h08', 'hot', 'Куриный шницель с пюре', 'Куриное филе, картофельное пюре, зелёный горошек', 4300),
+  M('h09', 'hot', 'Говяжья котлета с пюре', 'Котлета из мраморной говядины, картофельное пюре, шампиньоны', 3800),
+
+  M('k01', 'kids', 'Паста с куриными фрикадельками', 'Спагетти, фрикадельки из куриной грудки, пармезан, сливочный или томатный соус', 2500),
+  M('k02', 'kids', 'Пюре с куриными котлетками', 'Картофельное пюре, котлетки из куриной грудки, брокколи, зелёный горошек', 2700),
+  M('k03', 'kids', 'Супчик с фрикадельками', 'Домашняя лапша, фрикадельки из куриной грудки, варёное яйцо, томлёный лук', 2300)
 ];
 
 const GALLERY = [
@@ -1139,7 +1240,7 @@ const PH_CUP = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 const PH_DISH = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23B07A3E' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='24' cy='26' r='14'/%3E%3Ccircle cx='24' cy='26' r='8'/%3E%3Cpath d='M6 10v8M10 10v8M8 18v20M40 10c-3 2-3 8 0 10v18'/%3E%3C/svg%3E\")";
 const PH_CAM = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23B07A3E' stroke-width='2.4' stroke-linejoin='round'%3E%3Cpath d='M6 16h8l3-5h14l3 5h8v22H6V16Z'/%3E%3Ccircle cx='24' cy='26' r='7'/%3E%3C/svg%3E\")";
 document.documentElement.style.setProperty('--ico-cam', PH_CAM);
-const catIcon = cat => cat === 'pizza' ? PH_PIZZA : cat === 'coffee' ? PH_CUP : PH_DISH;
+const catIcon = cat => cat.startsWith('pizza') || cat === 'focaccia' ? PH_PIZZA : cat === 'coffee' ? PH_CUP : PH_DISH;
 
 /* =========================================================
    КОРЗИНА (состояние)
@@ -1299,6 +1400,7 @@ function renderCart() {
   });
   $('#cartTotal').textContent = formatPrice(total) + (unknown ? ' +' : '');
   $('#totalNote').hidden = !unknown;
+  if (typeof updateZone === 'function' && document.getElementById('zoneNote')) updateZone();
 }
 function renderAll(changedId) {
   if (changedId) { const item = MENU.find(m => m.id === changedId); if (item) buildAction(item); }
@@ -1373,11 +1475,30 @@ phoneIn.addEventListener('input', () => {
 $('#oName').addEventListener('input', () => $('#fName').classList.remove('err'));
 $('#oAddr').addEventListener('input', () => $('#fAddr').classList.remove('err'));
 form.querySelectorAll('input[name="mode"]').forEach(r => r.addEventListener('change', syncMode));
+form.querySelectorAll('input[name="zone"]').forEach(r => r.addEventListener('change', updateZone));
 function syncMode() {
   const del = form.mode.value === 'delivery';
   $('#fAddr').hidden = !del;
+  $('#fZone').hidden = !del;
   $('#pickNote').hidden = del;
   $('#oAddr').required = del;
+  updateZone();
+}
+// Подсказка по доставке: стоимость, итог и минимальная сумма
+function updateZone() {
+  const note = $('#zoneNote'), f = document.getElementById('orderForm');
+  if (!note || !f || !f.zone) return;
+  $('#fZone').classList.remove('err');
+  const zone = DELIVERY.zones[f.zone.value] || DELIVERY.zones.city;
+  const { total } = cartSummary();
+  const lack = DELIVERY.min - total;
+  if (lack > 0) {
+    note.textContent = 'Минимальный заказ на доставку — ' + formatPrice(DELIVERY.min) + ' без учёта доставки. Добавь ещё на ' + formatPrice(lack) + ' или выбери самовывоз.';
+    note.classList.add('warn');
+  } else {
+    note.textContent = 'Доставка ' + formatPrice(zone.fee) + ' · итого с доставкой ' + formatPrice(total + zone.fee);
+    note.classList.remove('warn');
+  }
 }
 syncMode();
 
@@ -1393,11 +1514,14 @@ function buildOrder() {
   if (name.length < 2) bad('#fName', $('#oName'));
   if (digits.length !== 10) bad('#fPhone', phoneIn);
   if (mode === 'delivery' && address.length < 5) bad('#fAddr', $('#oAddr'));
-  if (!ok) { firstBad.focus(); return null; }
   const { lines, total, unknown } = cartSummary();
+  if (mode === 'delivery' && total < DELIVERY.min) { updateZone(); bad('#fZone', $('#zCity')); }
+  if (!ok) { firstBad.focus(); return null; }
+  const zone = mode === 'delivery' ? { id: form.zone.value, ...DELIVERY.zones[form.zone.value] } : null;
   return {
     items: lines.map(l => ({ id: l.id, name: l.name, size: l.size || '', qty: l.qty, price: l.price })),
     total, hasUnknownPrice: unknown,
+    deliveryZone: zone ? zone.name : '', deliveryFee: zone ? zone.fee : 0,
     customer: { name, phone: '+7' + digits },
     mode, address: mode === 'delivery' ? address : '',
     comment,
@@ -1416,7 +1540,14 @@ function formatOrderText(order) {
     L.push((n + 1) + '. ' + i.name + (i.size ? ' (' + i.size + ')' : '') + ' × ' + i.qty + ' — ' + sum);
   });
   L.push('');
-  L.push('Итого: ' + formatPrice(order.total) + (order.hasUnknownPrice ? ' + позиции без цены' : ''));
+  const unk = order.hasUnknownPrice ? ' + позиции без цены' : '';
+  if (order.mode === 'delivery') {
+    L.push('Блюда: ' + formatPrice(order.total) + unk);
+    L.push('Доставка (' + order.deliveryZone + '): ' + formatPrice(order.deliveryFee));
+    L.push('Итого: ' + formatPrice(order.total + order.deliveryFee) + unk);
+  } else {
+    L.push('Итого: ' + formatPrice(order.total) + unk);
+  }
   L.push('');
   L.push('Имя: ' + order.customer.name);
   L.push('Телефон: ' + formatPhone(order.customer.phone.slice(2)));
